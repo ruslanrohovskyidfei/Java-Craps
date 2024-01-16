@@ -102,24 +102,29 @@ public class Craps {
         //Initializing Input/Output
         Scanner Input = new Scanner(System.in);
         //Initiate answer variable for game repeat
-        char userInput;
+        char userInput;   
         boolean answer = true;
-        while(answer) {
-            //Intance of Class object
-            Craps object = new Craps();
-            object.play();
+        boolean gameIteration = true;
+        
+        while(answer) {     
+            if(gameIteration) {                
+                //Intance of Class object
+                Craps object = new Craps();             
+                object.play();
+            }
             System.out.print("Do you want to play again? Enter Y to play again, N to end: ");
             userInput = Input.next().charAt(0);
             switch(userInput) {
-                case 'Y', 'y':
-                    answer = true;
+                case 'Y', 'y':        
+                    gameIteration = true;
                     break;
                 case 'N', 'n':
                     answer = false;
                     break;
                 default:
                     System.out.println("Only Y,y or N,n is accepted to answer");
-                    userInput = Input.next().charAt(0);
+                    gameIteration = false;
+                    break;
             }
         }
     }
